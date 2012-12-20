@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://clish.sourceforge.net/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://clish.sourceforge.net/XMLSchema
+                     http://clish.sourceforge.net/XMLSchema/clish.xsd">
+   <VIEW name="olp-view"
+            prompt="${SYSTEM_NAME}(OLP slot[${nameId}])# ">
+<!--
+     <PTYPE name="MODE_NAME"
+            method="select"
+            pattern="auto(1) L1channel(2) L2channel(3)"
+            help="mode the set"/>
+
+     <PTYPE name="BACK_MODE"
+            method="select"
+            pattern="auto(1) manual(2)"
+            help="return mode"/>            
+    -->         
+       <!--=======================================================-->
+            
+        <COMMAND name="show"
+                 help="Show the named view details">
+            <ACTION builtin="clish_getsystem"/>
+        </COMMAND>
+
+ 		<COMMAND name="set"
+			help="set OLP information"/>
+
+		<COMMAND name="set mode"
+			help="set OLP mode"/>	
+
+		<COMMAND name="set mode auto"
+			help="set OLP device to auto">
+			<ACTION  builtin="shell_olp_set_mode">auto</ACTION>  
+		</COMMAND>
+
+		<COMMAND name="set mode L1"
+			help="set OLP device to L1">
+		    <ACTION  builtin="shell_olp_set_mode">switchL1</ACTION>  
+		</COMMAND>
+
+		<COMMAND name="set mode L2"
+			help="set OLP device to L2">
+			<ACTION  builtin="shell_olp_set_mode">switchL2</ACTION>  
+		</COMMAND>
+
+
+
+		<COMMAND name="set back-mode"
+			help="set OLP return mode"/>
+
+        <COMMAND name="set back-mode auto"
+			help="set OLP return mode auto">
+			<ACTION  builtin="shell_olp_set_backmode">auto</ACTION>  		
+ 		</COMMAND>
+
+  		<COMMAND name="set back-mode manual"
+			help="set OLP return mode manual">
+			<ACTION  builtin="shell_olp_set_backmode">manual</ACTION>  				
+ 		</COMMAND>
+
+		<COMMAND name="set switch-rule"
+			help="set OLP switch rule"/>
+
+        <COMMAND name="set switch-rule working-fiber"
+			help="Set OLP switch rule to working fiber first">
+			<ACTION  builtin="shell_olp_set_switchrule">working</ACTION>  			
+ 		</COMMAND>
+
+  		<COMMAND name="set switch-rule highpower-fiber"
+			help="set OLP switch rule to high power fiber first">
+			<ACTION  builtin="shell_olp_set_switchrule">highpower</ACTION>  			
+ 		</COMMAND> 		
+
+  		<COMMAND name="set r1-power"
+			help="set R1 switch Optical power">
+    		<PARAM name="value"
+                   help="The valute"
+                   ptype="TUNIT"/>  
+		    <ACTION  builtin="shell_olp_set_r1power">${value}</ACTION>  	
+		</COMMAND>
+ 		
+  		<COMMAND name="set r2-power"
+			help="set R2 switch Optical power">
+			<PARAM name="value"
+                   help="The value"
+                   ptype="UINT"/>  
+		    <ACTION  builtin="shell_olp_set_r2power">${value}</ACTION>  	                   
+ 		</COMMAND> 		
+
+ 		<COMMAND name="set tx-power"
+			help="set tx alarm optical power">
+			<PARAM name="value"
+                   help="The value"
+                   ptype="UINT"/>  
+		    <ACTION  builtin="shell_olp_set_txpower">${value}</ACTION>  		                   
+ 		</COMMAND> 		
+
+  		<COMMAND name="set back-time"
+			help="set olp return time">
+			<PARAM name="value"
+                   help="The value"
+                   ptype="UINT"/>  
+		    <ACTION  builtin="shell_olp_set_backtime">${value}</ACTION>  	                   
+ 		</COMMAND> 		
+    
+-->        
+        <COMMAND name="exit"
+                 help="Exit the named view"
+                 view="enable-view"/>
+    </VIEW>
+</CLISH_MODULE>

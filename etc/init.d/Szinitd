@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# Start logging
+#
+
+case "$1" in
+  start)
+	echo -n "Starting telnetd "
+	clish
+        echo "OK"
+	;;
+  stop)
+	echo -n "Stopping logging: "
+	echo "OK"
+	;;
+  restart|reload)
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?

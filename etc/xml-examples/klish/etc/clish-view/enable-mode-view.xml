@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://clish.sourceforge.net/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://clish.sourceforge.net/XMLSchema
+                     http://clish.sourceforge.net/XMLSchema/clish.xsd">
+	<!--=======================================================-->
+
+<VIEW name="enable-view"
+	prompt="${SYSTEM_NAME}# ">
+
+<!-- Inheritance -->
+
+	<NAMESPACE ref="ping-view"
+		help="true"
+		completion="true"/>
+
+<!-- Simple enable mode commands -->
+
+        <PTYPE name="BLOAD_NAME"
+            method="select"
+           pattern="bload1(1) bload2(2) bload3(3) bload4(4) bload5(5) bload6(6) bload7(7) bload8(8) bload9(9) bload10(10) bload11(11) bload12(12) bload13(13) bload14(14) bload15(15)"
+          />
+              
+        <COMMAND name="session-bload"
+                         help="Enter the bload view"
+                         view="olp-view"
+                         viewid="nameId=${name}">
+            <PARAM name="name"
+                   help="slot named id"
+                   ptype="BLOAD_NAME"/>
+<!--                   
+            <PARAM name="other"
+                   help="Another value which can be optionally set"
+                   ptype="STRING"
+                   default="foobar"/>
+                
+
+            <ACTION  builtin="shell_olp_set_mode">${name} </ACTION>         
+-->               
+            
+        </COMMAND>
+
+
+<!-- Delete commands -->
+
+
+<!-- Show commands -->
+
+	<COMMAND name="show"
+		help="Show running system information"/>
+
+	<COMMAND name="show ip"
+		help="IP information"/>
+
+	<COMMAND name="show diag"
+		help="Show diagnostic information for port adapters/modules">
+		<ACTION>lspci</ACTION>
+	</COMMAND>
+
+		<COMMAND name="show time"
+		help="Show diagnostic information for port adapters/modules">
+		<ACTION>date</ACTION>
+	</COMMAND>
+
+	    <COMMAND name="show snmp"
+             help="Display the current session's command line history">
+        <ACTION  builtin="shell_show_snmp"></ACTION>
+    </COMMAND>
+        <COMMAND name="show trap"
+             help="Display trap">
+        <ACTION  builtin="shell_show_module"></ACTION>
+    </COMMAND>
+   <!--=======================================================-->		
+    <COMMAND name="show mac"
+             help="Display the current mac">
+        <ACTION  builtin="shell_show_module"></ACTION>
+    </COMMAND>
+   <!--=======================================================-->		
+<!--
+      <COMMAND name="show users"
+             help="Display the current session's command line history">
+        <ACTION>cat /etc/passwd |cut -f 1 -d : </ACTION>
+    </COMMAND>
+-->
+    <COMMAND name="show users"
+             help="Display the current session's command line history">
+		<ACTION builtin="shell_show_users"/>
+    </COMMAND>
+    
+
+	<COMMAND name="show system"
+		help="Show diagnostic information for port adapters/modules">
+		<ACTION builtin="clish_getsystem"/>
+	</COMMAND>
+
+	<COMMAND name="show bload"
+		help="Show diagnostic information for port adapters/modules">
+		<ACTION builtin="clish_close"/>
+	</COMMAND>
+
+	<COMMAND name="show alarm"
+		help="Show alarm information for system">
+		<ACTION builtin="shell_show_alarm"/>
+	</COMMAND>
+
+	<COMMAND name="show alarmtestadd"
+		help="Show alarm information for system">
+		<ACTION builtin="clish_close"/>
+	</COMMAND>
+
+
+<!-- Copy commands -->
+
+
+	<COMMAND name="logout"
+	help="Logout from the CLI"
+	lock="false">
+	<ACTION builtin="clish_close"/>
+</COMMAND>
+
+</VIEW>
+
+</CLISH_MODULE>

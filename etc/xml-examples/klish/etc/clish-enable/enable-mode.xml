@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://clish.sourceforge.net/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://clish.sourceforge.net/XMLSchema
+                     http://clish.sourceforge.net/XMLSchema/clish.xsd">
+	<!--=======================================================-->
+
+<VIEW name="enable-view"
+	prompt="${SYSTEM_NAME}# ">
+
+<!-- Inheritance -->
+
+	<NAMESPACE ref="ping-view"
+		help="true"
+		completion="true"/>
+
+<!-- Simple enable mode commands -->
+
+        <PTYPE name="BLOAD_NAME"
+            method="select"
+           pattern="bload1(1) bload2(2) bload3(3) bload4(4) bload5(5) bload6(6) bload7(7) bload8(8) bload9(9) bload10(10) bload11(11) bload12(12) bload13(13) bload14(14) bload15(15)"
+          />
+              
+        <COMMAND name="session-bload"
+                         help="Enter the bload view"
+                         view="enable-view"
+                         viewid="nameId=${name}">
+            <PARAM name="name"
+                   help="slot named id"
+                   ptype="BLOAD_NAME"/>
+<!--                   
+            <PARAM name="other"
+                   help="Another value which can be optionally set"
+                   ptype="STRING"
+                   default="foobar"/>
+                
+
+            <ACTION  builtin="shell_session_bload">${name} </ACTION>         
+-->               
+            
+        </COMMAND>
+
+        <COMMAND name="reset"
+                         help="reset the bload">
+            <PARAM name="name"
+                   help="slot named id"
+                   ptype="BLOAD_NAME"/>
+            <ACTION  builtin="shell_session_bload">${name} </ACTION>         
+        </COMMAND>
+            
+	<COMMAND name="reboot"
+		help="Halt and perform a cold restart">
+		<ACTION>reboot</ACTION>
+	</COMMAND>
+
+	<COMMAND name="system"
+		help="system default something commands"/>
+
+	<COMMAND name="system default"
+		help="restore system default information">
+<!--        <ACTION  builtin="clish_system_default"></ACTION> -->
+        <ACTION>date</ACTION>
+	</COMMAND>	
+
+	<COMMAND name="configure"
+		help="Enter configuration mode"/>
+
+	<COMMAND name="configure terminal"
+		help="Configure from the terminal"
+		view="configure-view">
+	</COMMAND>
+
+<!-- Delete commands -->
+
+	<COMMAND name="delete"
+		help="Delete something commands"/>
+
+	<COMMAND name="delete alarm"
+		help="Delete alarm information">
+		<ACTION>lspci</ACTION>
+	</COMMAND>
+
+	<COMMAND name="delete user"
+		help="Delete user information">
+		<PARAM name="name"
+               help="user name"
+              ptype="STRING"/>
+        <ACTION  builtin="shell_delete_user">${name} </ACTION>
+	</COMMAND>
+	
+
+<!-- Show commands -->
+
+	<COMMAND name="show"
+		help="Show running system information"/>
+
+	<COMMAND name="show ip"
+		help="IP information"/>
+
+	<COMMAND name="show diag"
+		help="Show diagnostic information for port adapters/modules">
+		<ACTION>lspci</ACTION>
+	</COMMAND>
+
+	<COMMAND name="show buzz"
+		help="Show buzz">
+		<ACTION>lspci</ACTION>
+	</COMMAND>	
+<!--
+	<COMMAND name="show running-config"
+		help="Current operating configuration">
+		<CONFIG operation="dump"/>
+	</COMMAND>
+
+	<COMMAND name="show startup-config"
+		help="Contents of startup configuration">
+		<ACTION>cat /etc/startup-config</ACTION>
+	</COMMAND>
+-->	
+
+	<COMMAND name="show time"
+		help="Show time">
+		<ACTION>date</ACTION>
+	</COMMAND>
+
+	<COMMAND name="show snmp"
+             help="Display snmp infomation">
+        <ACTION  builtin="shell_show_snmp"></ACTION>
+    </COMMAND>
+
+   <!--=======================================================-->		
+    <COMMAND name="show mac"
+             help="Display the current mac">
+        <ACTION  builtin="shell_show_module"></ACTION>
+    </COMMAND>
+   <!--=======================================================-->		
+<!--
+      <COMMAND name="show users"
+             help="Display the current session's command line history">
+        <ACTION>cat /etc/passwd |cut -f 1 -d : </ACTION>
+    </COMMAND>
+-->
+    <COMMAND name="show users"
+             help="Display the current session's command line history">
+		<ACTION builtin="shell_show_users"/>
+    </COMMAND>
+    
+
+	<COMMAND name="show system"
+		help="Show diagnostic information for port adapters/modules">
+		<ACTION builtin="clish_getsystem"/>
+	</COMMAND>
+
+	<COMMAND name="show bload"
+		help="Show diagnostic information for port adapters/modules">
+		<ACTION builtin="clish_close"/>
+	</COMMAND>
+
+	<COMMAND name="show alarm"
+		help="Show alarm information for system">
+		<ACTION builtin="shell_show_alarm"/>
+	</COMMAND>
+
+	<COMMAND name="show alarmtestadd"
+		help="Show alarm information for system">
+		<ACTION builtin="shell_show_alarmtestadd"/>
+	</COMMAND>
+
+    <COMMAND name="show session-bload"
+                         help="Enter the bload view">
+            <PARAM name="name"
+                   help="slot named id"
+                   ptype="BLOAD_NAME"/>	
+        <ACTION  builtin="shell_olp_show_all">${name}</ACTION>
+	</COMMAND>
+
+
+	   <COMMAND name="upgrade"
+            help="upgrade current session's command line"/>
+
+            
+   <!--=======================================================-->	
+    <COMMAND name="upgrade config"
+             help="upgrade configure file current session's command line">
+       <PARAM name="ipaddr"
+               help="Set ip addr AA.BB.CC.DD"
+              ptype="IP_ADDR"/>             
+            <PARAM name="comm"
+               help="File name"
+              ptype="STRING"/>   
+        <ACTION  builtin="shell_upgrade_config">${ipaddr}  ${comm}</ACTION>
+    </COMMAND>
+   <!--=======================================================-->		
+    <COMMAND name="upgrade image"
+             help="upgrade image current session's command line">
+       <PARAM name="ipaddr"
+               help="Set ip addr AA.BB.CC.DD"
+              ptype="IP_ADDR"/> 
+            <PARAM name="comm"
+               help="File name"
+              ptype="STRING"/>   
+        <ACTION  builtin="shell_upgrade_image">${ipaddr}  ${comm}</ACTION>
+    </COMMAND>
+
+   <!--=======================================================-->	
+    <COMMAND name="download"
+            help="download config commands from tftp"/>
+   <!--=======================================================-->	
+      <COMMAND name="download config"
+             help="download config commands from tftp">
+       <PARAM name="ipaddr"
+               help="Set ip addr AA.BB.CC.DD"
+              ptype="IP_ADDR"/> 
+            <PARAM name="comm"
+               help="File name"
+              ptype="STRING"/>   
+        <ACTION  builtin="shell_download_config">${ipaddr} ${comm}</ACTION>
+    </COMMAND>
+
+
+    <COMMAND name="name"
+		help="Set system's view name">
+		<PARAM name="namestr"
+			help="This system's view name"
+			ptype="STRING"/>
+           <ACTION  builtin="shell_view_name">${namestr} </ACTION>
+	</COMMAND>
+    
+
+
+<!-- Copy commands 
+
+	<COMMAND name="copy"
+		help="Copy from one file to another"/>
+
+	<COMMAND name="copy running-config"
+		help="Copy from current system configuration"/>
+
+	<COMMAND name="copy running-config startup-config"
+		help="Copy to startup configuration">
+		<CONFIG operation="dump" file="/etc/startup-config"/>
+	</COMMAND>
+-->
+
+	<COMMAND name="test"
+		help="test something commands"/>
+
+	<COMMAND name="test slotin"
+		help="test user information">
+		<PARAM name="name"
+               help="user name"
+              ptype="STRING"/>
+        <ACTION  builtin="shell_olp_test_in">${name} </ACTION>
+	</COMMAND>
+	
+	<COMMAND name="test slotout"
+		help="test user information">
+		<PARAM name="name"
+               help="user name"
+              ptype="STRING"/>
+        <ACTION  builtin="shell_olp_test_out">${name} </ACTION>
+	</COMMAND>
+
+</VIEW>
+
+</CLISH_MODULE>
