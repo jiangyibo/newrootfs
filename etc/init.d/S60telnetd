@@ -5,12 +5,12 @@
 
 case "$1" in
   start)
-	echo -n "Starting cli \n"
+	echo -n "Starting telnetd \n"
 	telnetd -l bash
         echo "OK"
 	;;
   stop)
-	echo -n "Stopping cli :"
+	echo -n "Stopping telnetd :"
 	echo "OK"
 	;;
   restart|reload)
