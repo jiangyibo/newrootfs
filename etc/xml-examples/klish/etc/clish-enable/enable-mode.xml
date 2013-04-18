@@ -18,15 +18,19 @@
 
         <PTYPE name="BLOAD_NAME"
             method="select"
-           pattern="bload1(1) bload2(2) bload3(3) bload4(4) bload5(5) bload6(6) bload7(7) bload8(8) bload9(9) bload10(10) bload11(11) bload12(12) bload13(13) bload14(14) bload15(15)"
+           pattern="module1(1) module2(2) module3(3) module4(4) module5(5) module6(6) module7(7) module8(8) module9(9) module10(10) module11(11) module12(12) module13(13) module14(14) module15(15)"
           />
+        <PTYPE name="BLOAD_ALL"
+            method="select"
+           pattern="module1(1) module2(2) module3(3) module4(4) module5(5) module6(6) module7(7) module8(8) module9(9) module10(10) module11(11) module12(12) module13(13) module14(14) module15(15) module16(16)"
+          />          
               
-        <COMMAND name="session-bload"
-                         help="Enter the bload view"
+        <COMMAND name="session-module"
+                         help="Enter the module view"
                          view="enable-view"
                          viewid="nameId=${name}">
             <PARAM name="name"
-                   help="slot named id"
+                   help="Slot named id"
                    ptype="BLOAD_NAME"/>
 <!--                   
             <PARAM name="other"
@@ -41,25 +45,24 @@
         </COMMAND>
 
         <COMMAND name="reset"
-                         help="reset the bload">
+                         help="Reset the module">
             <PARAM name="name"
-                   help="slot named id"
+                   help="Slot named id"
                    ptype="BLOAD_NAME"/>
-            <ACTION  builtin="shell_session_bload">${name} </ACTION>         
+            <ACTION  builtin="clish_reset_bload">${name} </ACTION>         
         </COMMAND>
             
 	<COMMAND name="reboot"
-		help="Halt and perform a cold restart">
+		help="Halt and perform restart">
 		<ACTION>reboot</ACTION>
 	</COMMAND>
 
 	<COMMAND name="system"
-		help="system default something commands"/>
+		help="System default commands"/>
 
 	<COMMAND name="system default"
 		help="restore system default information">
-<!--        <ACTION  builtin="clish_system_default"></ACTION> -->
-        <ACTION>date</ACTION>
+        <ACTION  builtin="clish_system_default"></ACTION> 
 	</COMMAND>	
 
 	<COMMAND name="configure"
@@ -77,9 +80,13 @@
 
 	<COMMAND name="delete alarm"
 		help="Delete alarm information">
-		<ACTION>lspci</ACTION>
+		 <PARAM name="string"
+         help="alarm index"
+        ptype="UINT"/>
+        <ACTION  builtin="shell_delete_alarm">${string}</ACTION>
 	</COMMAND>
-
+	
+<!--
 	<COMMAND name="delete user"
 		help="Delete user information">
 		<PARAM name="name"
@@ -87,13 +94,14 @@
               ptype="STRING"/>
         <ACTION  builtin="shell_delete_user">${name} </ACTION>
 	</COMMAND>
-	
+-->
+
 
 <!-- Show commands -->
 
 	<COMMAND name="show"
-		help="Show running system information"/>
-
+		help="Show system information"/>
+<!--
 	<COMMAND name="show ip"
 		help="IP information"/>
 
@@ -106,7 +114,7 @@
 		help="Show buzz">
 		<ACTION>lspci</ACTION>
 	</COMMAND>	
-<!--
+
 	<COMMAND name="show running-config"
 		help="Current operating configuration">
 		<CONFIG operation="dump"/>
@@ -128,12 +136,12 @@
         <ACTION  builtin="shell_show_snmp"></ACTION>
     </COMMAND>
 
-   <!--=======================================================-->		
+   <!--=======================================================		
     <COMMAND name="show mac"
              help="Display the current mac">
         <ACTION  builtin="shell_show_module"></ACTION>
     </COMMAND>
-   <!--=======================================================-->		
+    =======================================================-->		
 <!--
       <COMMAND name="show users"
              help="Display the current session's command line history">
@@ -141,26 +149,34 @@
     </COMMAND>
 -->
     <COMMAND name="show users"
-             help="Display the current session's command line history">
+             help="Display all users">
 		<ACTION builtin="shell_show_users"/>
     </COMMAND>
     
 
 	<COMMAND name="show system"
-		help="Show diagnostic information for port adapters/modules">
+		help="Show system infomation">
 		<ACTION builtin="clish_getsystem"/>
 	</COMMAND>
 
-	<COMMAND name="show bload"
-		help="Show diagnostic information for port adapters/modules">
-		<ACTION builtin="clish_close"/>
+	<COMMAND name="show session-module"
+		help="Show exist module infomation">
+		<ACTION builtin="clish_show_bload"/>
 	</COMMAND>
+
+	<COMMAND name="show module"
+		help="Show current module infomateion">
+            <PARAM name="name"
+                   help="slot named id"
+                   ptype="BLOAD_ALL"/>			
+		        <ACTION  builtin="clish_show_nmu">${name}</ACTION>
+	</COMMAND>	
 
 	<COMMAND name="show alarm"
 		help="Show alarm information for system">
 		<ACTION builtin="shell_show_alarm"/>
 	</COMMAND>
-
+<!--
 	<COMMAND name="show alarmtestadd"
 		help="Show alarm information for system">
 		<ACTION builtin="shell_show_alarmtestadd"/>
@@ -173,15 +189,15 @@
                    ptype="BLOAD_NAME"/>	
         <ACTION  builtin="shell_olp_show_all">${name}</ACTION>
 	</COMMAND>
-
+-->
 
 	   <COMMAND name="upgrade"
-            help="upgrade current session's command line"/>
+            help="Upgrade current session's command line"/>
 
             
    <!--=======================================================-->	
     <COMMAND name="upgrade config"
-             help="upgrade configure file current session's command line">
+             help="Upgrade configure file current session's command line">
        <PARAM name="ipaddr"
                help="Set ip addr AA.BB.CC.DD"
               ptype="IP_ADDR"/>             
@@ -192,7 +208,7 @@
     </COMMAND>
    <!--=======================================================-->		
     <COMMAND name="upgrade image"
-             help="upgrade image current session's command line">
+             help="Upgrade image current session's command line">
        <PARAM name="ipaddr"
                help="Set ip addr AA.BB.CC.DD"
               ptype="IP_ADDR"/> 
@@ -204,10 +220,10 @@
 
    <!--=======================================================-->	
     <COMMAND name="download"
-            help="download config commands from tftp"/>
+            help="Download config commands from tftp"/>
    <!--=======================================================-->	
       <COMMAND name="download config"
-             help="download config commands from tftp">
+             help="Download config commands from tftp">
        <PARAM name="ipaddr"
                help="Set ip addr AA.BB.CC.DD"
               ptype="IP_ADDR"/> 
@@ -218,7 +234,7 @@
     </COMMAND>
 
 
-    <COMMAND name="name"
+    <COMMAND name="prompt"
 		help="Set system's view name">
 		<PARAM name="namestr"
 			help="This system's view name"
@@ -240,7 +256,7 @@
 		help="Copy to startup configuration">
 		<CONFIG operation="dump" file="/etc/startup-config"/>
 	</COMMAND>
--->
+
 
 	<COMMAND name="test"
 		help="test something commands"/>
@@ -260,6 +276,7 @@
               ptype="STRING"/>
         <ACTION  builtin="shell_olp_test_out">${name} </ACTION>
 	</COMMAND>
+-->
 
 </VIEW>
 

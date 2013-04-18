@@ -4,7 +4,7 @@
  xsi:schemaLocation="http://clish.sourceforge.net/XMLSchema
                      http://clish.sourceforge.net/XMLSchema/clish.xsd">
 
-<STARTUP view="info-view">
+<STARTUP view="enable-view">
 </STARTUP>
 
 </CLISH_MODULE>

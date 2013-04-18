@@ -25,4 +25,18 @@
 	    pattern="true(1) false(0)"
 	       help="Boolean choice"/>
 	<!--=======================================================-->
+     <PTYPE name="VBUNIT"
+         method="integer"
+          pattern="2..5"
+          help="volt"/>
+
+     <PTYPE name="VXUNIT"
+         method="integer"
+          pattern="5..20"
+          help="volt"/>
+          
+     <PTYPE name="AUNIT"
+         method="integer"
+          pattern="-20..10"
+          help="temp"/>	
 </CLISH_MODULE>

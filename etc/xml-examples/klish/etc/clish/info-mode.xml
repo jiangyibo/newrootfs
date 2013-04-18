@@ -5,7 +5,7 @@
                      http://clish.sourceforge.net/XMLSchema/clish.xsd">
 	<!--=======================================================-->
 
-<VIEW name="info-view"
+<VIEW name="enable-view"
 	prompt="${SYSTEM_NAME}&gt; ">
 
 <!-- Inheritance -->
@@ -13,6 +13,22 @@
 	<NAMESPACE ref="ping-view"
 		help="true"
 		completion="true"/>
+
+        <PTYPE name="BLOAD_NAME"
+            method="select"
+           pattern="module1(1) module2(2) module3(3) module4(4) module5(5) module6(6) module7(7) module8(8) module9(9) module10(10) module11(11) module12(12) module13(13) module14(14) module15(15)"
+          />
+
+        <PTYPE name="BLOAD_ANDNMU"
+            method="select"
+           pattern="module1(1) module2(2) module3(3) module4(4) module5(5) module6(6) module7(7) module8(8) module9(9) module10(10) module11(11) module12(12) module13(13) module14(14) module15(15) module16(16)"
+          />          
+
+        <PTYPE name="BLOAD_PORT"
+            method="select"
+           pattern="port1(1) port2(2) port3(3) port4(4)"
+          />
+                     	
 
 <!-- Simple non-priveledged mode commands -->
 <!--
@@ -28,7 +44,42 @@
 		  <ACTION builtin="clish_close"/>
 	    </COMMAND>
 
+	    <COMMAND name="changepass"
+             help="change user password">
+        <PARAM name="limit"
+               help="current user name"
+              ptype="STRING"/>
+        <ACTION builtin="shell_add_changepass">${limit}</ACTION>
+    </COMMAND>
 
+        <COMMAND name="session-module"
+                         help="Enter the bload view"
+                         view="olp-view"
+                         viewid="nameId=${name}">
+            <PARAM name="name"
+                   help="slot named id"
+                   ptype="BLOAD_NAME"/>
+        </COMMAND>
+    
+     <COMMAND name="setinfo"
+             help="set slot info for system">
+        <PARAM name="name"
+                   help="slot named id"
+                   ptype="BLOAD_ANDNMU"/>
+        <PARAM name="sn"
+               help="Set sn"
+              ptype="STRING"/>
+        <PARAM name="model"
+               help="Set model"
+              ptype="STRING"/>
+        <PARAM name="creation"
+               help="Set creation"
+              ptype="STRING"/>
+        <PARAM name="hwver"
+               help="Set hwver"
+              ptype="STRING"/>                   
+        <ACTION builtin="shell_setslot_info">${name} ${sn} ${model} ${creation} ${hwver}</ACTION>
+    </COMMAND>  
 </VIEW>
 
 </CLISH_MODULE>

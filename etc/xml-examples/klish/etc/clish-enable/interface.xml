@@ -6,7 +6,7 @@
 	<!--=======================================================-->
 
 <VIEW name="enable-view">
-
+<!--
 	<COMMAND name="show interfaces"
 		help="Interface status and configuration">
 		<ACTION builtin="shell_show_module"/>
@@ -16,11 +16,13 @@
 		help="IP interface status and configuration">
 		<ACTION builtin="shell_show_module"/>
 	</COMMAND>
+-->	
 
 </VIEW>
 
 <VIEW name="configure-view">
 
+<!--
 	<COMMAND name="interface"
 		help="Select an interface to configure"/>
 
@@ -33,6 +35,7 @@
 			ptype="IFACE_NUM"/>
 		<CONFIG priority="0x2001" pattern="^${__line}$"/>
 	</COMMAND>
+-->
 
 </VIEW>
 

@@ -6,7 +6,7 @@
 	<!--=======================================================-->
 
 <VIEW name="enable-view"
-	prompt="${SYSTEM_NAME}# ">
+	prompt="${SYSTEM_NAME}$ ">
 
 <!-- Inheritance -->
 
@@ -18,15 +18,15 @@
 
         <PTYPE name="BLOAD_NAME"
             method="select"
-           pattern="bload1(1) bload2(2) bload3(3) bload4(4) bload5(5) bload6(6) bload7(7) bload8(8) bload9(9) bload10(10) bload11(11) bload12(12) bload13(13) bload14(14) bload15(15)"
+           pattern="module1(1) module2(2) module3(3) module4(4) module5(5) module6(6) module7(7) module8(8) module9(9) module10(10) module11(11) module12(12) module13(13) module14(14) module15(15)"
           />
               
-        <COMMAND name="session-bload"
-                         help="Enter the bload view"
+        <COMMAND name="session-module"
+                         help="Enter the module view"
                          view="olp-view"
                          viewid="nameId=${name}">
             <PARAM name="name"
-                   help="slot named id"
+                   help="Slot named id"
                    ptype="BLOAD_NAME"/>
 <!--                   
             <PARAM name="other"
@@ -48,7 +48,8 @@
 
 	<COMMAND name="show"
 		help="Show running system information"/>
-
+		
+<!--
 	<COMMAND name="show ip"
 		help="IP information"/>
 
@@ -56,28 +57,26 @@
 		help="Show diagnostic information for port adapters/modules">
 		<ACTION>lspci</ACTION>
 	</COMMAND>
+-->	
 
-		<COMMAND name="show time"
+    <COMMAND name="show time"
 		help="Show diagnostic information for port adapters/modules">
 		<ACTION>date</ACTION>
 	</COMMAND>
 
-	    <COMMAND name="show snmp"
+	<COMMAND name="show snmp"
              help="Display the current session's command line history">
-        <ACTION  builtin="shell_show_snmp"></ACTION>
+        <ACTION builtin="shell_show_snmp"></ACTION>
     </COMMAND>
-        <COMMAND name="show trap"
+    
+    <COMMAND name="show trap"
              help="Display trap">
         <ACTION  builtin="shell_show_module"></ACTION>
     </COMMAND>
    <!--=======================================================-->		
-    <COMMAND name="show mac"
-             help="Display the current mac">
-        <ACTION  builtin="shell_show_module"></ACTION>
-    </COMMAND>
    <!--=======================================================-->		
 <!--
-      <COMMAND name="show users"
+    <COMMAND name="show users"
              help="Display the current session's command line history">
         <ACTION>cat /etc/passwd |cut -f 1 -d : </ACTION>
     </COMMAND>
@@ -93,9 +92,9 @@
 		<ACTION builtin="clish_getsystem"/>
 	</COMMAND>
 
-	<COMMAND name="show bload"
+	<COMMAND name="show module"
 		help="Show diagnostic information for port adapters/modules">
-		<ACTION builtin="clish_close"/>
+		<ACTION builtin="clish_show_bload"/>
 	</COMMAND>
 
 	<COMMAND name="show alarm"

@@ -13,14 +13,17 @@
 
 	<NAMESPACE ref="enable-view" 
 		prefix="do"
-		help="true"
+		help="True"
 		completion="true"/>
-
+<!--
 	<COMMAND name="do"
 		help="To run exec commands in config mode"/>
 
+-->		
+
 <!-- Virtual commands -->
 
+<!--
 	<COMMAND name="no"
 		help="Negate a command or set its defaults"/>
 
@@ -30,12 +33,15 @@
 	<COMMAND name="no ip"
 		help="Global IP configuration subcommands"/>
 
+-->
+
+
 <!-- Simple configuration mode commands -->
 
-	<!--=======================================================-->
+	<!--=======================================================
    <COMMAND name="reset"
             help="reset utility commands for time related details"/>
-   <!--=======================================================-->	
+	
     <COMMAND name="reset bload"
              help="Display the current session's command line history">
         <PARAM name="limit"
@@ -43,23 +49,43 @@
               ptype="UINT"/>
         <ACTION builtin="clish_reset_bload">1 ${limit}</ACTION>
     </COMMAND>
-   <!--=======================================================-->	
-    <COMMAND name="adduser"
-             help="add user for system">
+   =======================================================-->	
+	<COMMAND name="adduser"
+		help="Add user for system"/>		
+
+   
+    <COMMAND name="adduser normal"
+             help="Add normal user for system">
         <PARAM name="limit"
                help="Set user name"
               ptype="STRING"/>
-        <ACTION builtin="shell_add_user">${limit}</ACTION>
+        <ACTION builtin="shell_add_user">2 ${limit}</ACTION>
     </COMMAND>
 
+     <COMMAND name="adduser admin"
+             help="Add administrator user for system">
+        <PARAM name="limit"
+               help="Set user name"
+              ptype="STRING"/>
+        <ACTION builtin="shell_add_user">1 ${limit}</ACTION>
+    </COMMAND>
+
+	<COMMAND name="ip"
+		help="Global IP configuration subcommands"/>
     <COMMAND name="ip address"
              help="Set ip address">
         <PARAM name="addr"
                help="Set ip address"
               ptype="IP_ADDR"/>
-        <ACTION builtin="shell_set_ipaddr">${addr}</ACTION>
+        <PARAM name="mask"
+               help="Set ip netmask"
+              ptype="IP_ADDR_MASK"/>                
+        <PARAM name="gate"
+               help="Set ip gateway"
+              ptype="IP_ADDR"/>              
+        <ACTION builtin="shell_set_ipaddr">${addr} ${mask} ${gate}</ACTION>
     </COMMAND>
-
+<!--
     <COMMAND name="ip gateway"
              help="Set ip gateway">
         <PARAM name="addr"
@@ -67,40 +93,41 @@
               ptype="IP_ADDR"/>
         <ACTION builtin="shell_set_gateway">${addr}</ACTION>
     </COMMAND>
+-->
 
    <!--=======================================================-->	
     <COMMAND name="deluser"
-             help="delete user for system">
+             help="Delete user for system">
         <PARAM name="limit"
-               help="user name"
+               help="User name"
               ptype="STRING"/>
         <ACTION builtin="shell_delete_user">${limit}</ACTION>
     </COMMAND>
    <!--=======================================================-->	
     <COMMAND name="changepass"
-             help="change user password">
+             help="Change user password">
         <PARAM name="limit"
-               help="current user password"
+               help="Current user name"
               ptype="STRING"/>
-        <ACTION builtin="shell_delete_user">${limit}</ACTION>
+        <ACTION builtin="shell_add_changepass">${limit}</ACTION>
     </COMMAND>
 <!-- temp=======================================================-->	
 	<COMMAND name="temperature"
-		help="set alarm temperature"/>			
+		help="Set alarm temperature"/>			
 
 	<COMMAND name="temperature min"
-		help="set min temperature alarm">
+		help="Set min temperature alarm">
 		<PARAM name="limit"
-               help="min temperature alarm"
-              ptype="UINT"/>
+               help="Min temperature alarm"
+              ptype="AUNIT"/>
         <ACTION builtin="shell_system_set_temp">1 ${limit}</ACTION>
 	</COMMAND>
 
 	<COMMAND name="temperature max"
-		help="set max temperature alarm">
+		help="Set max temperature alarm">
 		<PARAM name="limit"
-               help="max temperature alarm"
-              ptype="UINT"/>
+               help="Max temperature alarm"
+              ptype="BUNIT"/>
         <ACTION builtin="shell_system_set_temp">2 ${limit}</ACTION>
 	</COMMAND>
 
@@ -108,122 +135,99 @@
 
 <!-- temp=======================================================-->	
 	<COMMAND name="voltage"
-		help="set alarm voltage"/>		
+		help="Set alarm voltage"/>		
 
-	<COMMAND name="voltage power1"
-		help="set alarm voltage power1"/>			
+	<COMMAND name="voltage power"
+		help="Set alarm voltage power"/>			
 
-	<COMMAND name="voltage power1 min"
-		help="set min voltage power1 alarm">
+	<COMMAND name="voltage power min"
+		help="Set min voltage power alarm">
 		<PARAM name="limit"
-               help="min voltage power1 alarm"
-              ptype="UINT"/>
-        <ACTION builtin="shell_system_set_temp">1 1 ${limit}</ACTION>
+               help="Min voltage power alarm"
+              ptype="VOLTMIN"/>
+        <ACTION builtin="shell_system_set_volt">1 1 ${limit}</ACTION>
 	</COMMAND>
 
-	<COMMAND name="voltage power1 max"
-		help="set max voltage power1 alarm">
+	<COMMAND name="voltage power max"
+		help="Set max voltage power alarm">
 		<PARAM name="limit"
-               help="max voltage power1 alarm"
-              ptype="UINT"/>
-        <ACTION builtin="shell_system_set_temp">1 2 ${limit}</ACTION>
-	</COMMAND>
-
-	<COMMAND name="voltage power2"
-		help="set voltage power2"/>			
-
-	<COMMAND name="voltage power2 min"
-		help="set min voltage power2 alarm">
-		<PARAM name="limit"
-               help="min voltage power2 alarm"
-              ptype="UINT"/>
-        <ACTION builtin="shell_system_set_temp">2 1 ${limit}</ACTION>
-	</COMMAND>
-
-	<COMMAND name="voltage power2 max"
-		help="set max voltage power2 alarm">
-		<PARAM name="limit"
-               help="max voltage power2 alarm"
-              ptype="UINT"/>
-        <ACTION builtin="shell_system_set_temp">2 2 ${limit}</ACTION>
+               help="Max voltage power alarm"
+              ptype="VOLTMAX"/>
+        <ACTION builtin="shell_system_set_volt">1 2 ${limit}</ACTION>
 	</COMMAND>
 
 <!--=======================================================-->		
 
-
-    
-<!-- buzz=======================================================-->	
-	<COMMAND name="buzz"
-		help="set buzz"/>			
-
-	<COMMAND name="buzz on"
-		help="set buzz on">
-        <ACTION builtin="shell_system_set_buzz">1</ACTION>
-	</COMMAND>
-
-	<COMMAND name="buzz off"
-		help="set buzz off">
-        <ACTION builtin="shell_system_set_buzz">2</ACTION>
-	</COMMAND>
-
-	<COMMAND name="buzz clear"
-		help="set buzz clear">
-        <ACTION builtin="shell_system_set_buzz">3</ACTION>
-	</COMMAND>
-<!--=======================================================-->		
 
     <COMMAND name="snmp"
-            help="set utility commands for time related details"/>
+            help="Set snmp commands for manage details"/>
+
    <!--=======================================================-->	
     <COMMAND name="snmp comm"
-             help="set snmp comminty string">
-        <PARAM name="string"
-               help="comminty string"
+             help="Set snmp community string">
+        <PARAM name="addr"
+               help="Set ip address"
+              ptype="IP_ADDR"/>             
+        <PARAM name="rocomm"
+               help="Read only community string"
               ptype="STRING"/>
-        <ACTION  builtin="shell_set_snmp_com">${string} </ACTION>
+        <PARAM name="rwcomm"
+               help="Read and write community string"
+              ptype="STRING"/>      
+        <PARAM name="port"
+               help="Snmp port"
+              ptype="UINT"/>     
+        <PARAM name="readonly"
+               help="Read only"
+              ptype="SNMPSTATE"/> 
+        <PARAM name="enable"
+               help="Snmp enable"
+              ptype="SNMPENABLE"/>               
+        <ACTION  builtin="shell_set_snmp_com">${addr} ${rocomm} ${rwcomm} ${port} ${readonly} ${enable}</ACTION>
     </COMMAND>
 	<!--=======================================================-->
-	    <COMMAND name="snmp port"
-             help="set snmp comminty string">
+	
+	    <COMMAND name="snmp delete"
+             help="Set snmp community string">
         <PARAM name="string"
-               help="snmp port string"
+               help="Snmp index"
               ptype="UINT"/>
-        <ACTION  builtin="shell_set_snmp_com">${string} </ACTION>
+        <ACTION  builtin="shell_delete_snmp_com">${string} </ACTION>
     </COMMAND>
-	<!--=======================================================-->
-  <COMMAND name="snmp add trap"
-             help="snmp trap">
+
+    <!--=======================================================-->
+
+
+  <COMMAND name="snmp trapadd"
+             help="Snmp add trap">
+         <PARAM name="limit"
+               help="Set user name"
+              ptype="STRING"/>
             <PARAM name="ipaddr"
-               help="set snmp trap ipaddr"
-              ptype="STRING"/>   
-            <PARAM name="comm"
-               help="Set the size of history list (zero means unbounded)"
-              ptype="STRING"/>   
+               help="Set snmp trap ipaddr"
+              ptype="IP_ADDR"/>   
             <PARAM name="port"
-               help="Set the size of history list (zero means unbounded)"
-              ptype="STRING"/>   
-        <ACTION builtin="shell_set_snmp_trap">${ipaddr} ${comm} ${port}</ACTION>
+               help="Set snmp trap port"
+              ptype="SNMPPORT"/>  
+        <PARAM name="enable"
+               help="Snmp enable"
+              ptype="TRAPENABLE"/>              
+        <ACTION builtin="shell_set_snmp_trap">${limit} ${ipaddr} ${port} ${enable}</ACTION>
     </COMMAND>
 	<!--=======================================================-->	
-  <COMMAND name="snmp delete trap"
-             help="snmp set community">
+  <COMMAND name="snmp trapdelete"
+             help="Snmp delete trap">
             <PARAM name="ipaddr"
-               help="set snmp community name"
-              ptype="IP_ADDR"/>   
-
-        <ACTION builtin="shell_set_snmp_trap">${ipaddr} </ACTION>
+               help="Snmp delete trap"
+              ptype="IP_ADDR"/>  
+            <PARAM name="port"
+               help="Set snmp trap port"
+              ptype="SNMPPORT"/>                  
+        <ACTION builtin="shell_delete_snmp_trap">${ipaddr} ${port}</ACTION>
     </COMMAND>
 	<!--=======================================================-->	
 
     
-	<!--=======================================================-->
-  <COMMAND name="reset cpu"
-             help="reset cpu">
-        <ACTION builtin="clish_reset_cpu"></ACTION>
-    </COMMAND>
-	<!--=======================================================-->	
-	
-
 	<COMMAND name="exit"
 		help="Exit from configure mode"
 		view="enable-view"

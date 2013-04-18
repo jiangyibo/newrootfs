@@ -21,7 +21,7 @@
        <!--=======================================================-->
        <PTYPE name="MONTH_NAME"
             method="select"
-           pattern="January(1) February(2) March(3) April(4) May(5) June(6) July(7) August(8) September(9) October(10) November(11) December(12)"
+           pattern="1(1) 2(2) 3(3) 4(4) 5(5) 6(6) 7(7) 8(8) 9(9) 10(10) 11(11) 12(12)"
               help="Month of the year"/>
        <!--=======================================================-->
        <PTYPE name="TZ_NAME"
@@ -35,25 +35,26 @@
               help="Year"/>
     <!--=======================================================-->
    <COMMAND name="time"
-            help="some utility commands for time related details"/>
+            help="Utility commands for time related details"/>
    <!--=======================================================-->
    <COMMAND name="time set"
             help="Set the time and date">
-       <PARAM name="time"
-              help="Current time"
-              ptype="TIME_HHMMSS"/>
+       <PARAM name="year"
+              help="Year"
+              ptype="YYYY_YEAR"/>   
+       <PARAM name="month"
+              help="Month of year"
+              ptype="MONTH_NAME"/>  
        <PARAM name="day"
               help="Day of the month"
               ptype="DAY_MONTH"/>
-       <PARAM name="month"
-              help="Month of year"
-              ptype="MONTH_NAME"/>
-       <PARAM name="year"
-              help="Year"
-              ptype="YYYY_YEAR"/>
-       <ACTION>echo SET-TIME time:${time} day:${day} month:${month} year:${year}</ACTION>
+       <PARAM name="time"
+              help="Current time"
+              ptype="TIME_HHMMSS"/>
+        <ACTION  builtin="shell_set_time">${year} ${month} ${day} ${time}</ACTION>
    </COMMAND>
    <!--=======================================================-->    
+<!--   
    <COMMAND name="time timezone"
             help="Set the timezone">
         <PARAM name="zone"
@@ -64,6 +65,7 @@
                ptype="TZ_OFFSET_HR"/>
        <ACTION>echo TIMEZONE zone: ${zone} hours:${hours}</ACTION>
    </COMMAND>
+-->   
    <!--=======================================================-->    
    </VIEW>
 </CLISH_MODULE>

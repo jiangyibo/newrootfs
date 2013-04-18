@@ -58,5 +58,13 @@
 		pattern="^[0-9]*[1-9][0-9]*"
 		help="Entry number"/>
 	<!--=======================================================-->
-
+		<PTYPE name="FPORT"
+		method="select"
+		pattern="port1(1) port2(2) port3(3) port4(4)"
+		help="Port choice"/>
+	<!--=======================================================-->	
+     <PTYPE name="VBUNIT"
+         method="integer"
+          pattern="0..255"
+          help="value"/>
 </CLISH_MODULE>

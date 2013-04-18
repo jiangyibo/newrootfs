@@ -62,9 +62,143 @@
 		pattern="^[0-9]*[1-9][0-9]*"
 		help="Entry number"/>
 	<!--=======================================================-->
-	<PTYPE name="TUNIT"
-		pattern="^[0-9]+(\.[0-9])?([0-9])*$"
-		help="0 --- xx.xx"/>
+	<PTYPE name="TUNITxiaoshu"
+		pattern="^(-(([0-9]+/.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*/.[0-9]+)|([0-9]*[1-9][0-9]*)))$"
+		help="0 --- -xx.xx"/>
 	<!--=======================================================-->
+	<PTYPE name="FPORT"
+		method="select"
+		pattern="port1(1) port2(2) port3(3) port4(4)"
+		help="Port choice"/>
+	<!--=======================================================-->	
+	<PTYPE name="FSPEED"
+		method="select"
+		pattern="10G(1) 8.5G(2) 6.25G(3) 4.25G(4) 2.5G(5)"
+		help="Speed choice"/>
+	<!--=======================================================-->	
+	<PTYPE name="FSTATE"
+		method="select"
+		pattern="on(1) off(2) other(3)"
+		help="port state"/>
+	<!--=======================================================-->	
+	<PTYPE name="NSTATE"
+		method="select"
+		pattern="on(1) off(2)"
+		help="port state"/>
+	<!--=======================================================-->		
+	<PTYPE name="SNMPSTATE"
+		method="select"
+		pattern="on(1) off(2)"
+		help="snmp readonly"/>
+	<!--=======================================================-->		
+	<PTYPE name="SNMPENABLE"
+		method="select"
+		pattern="enable(1) disable(2)"
+		help="snmp readonly"/>
+	<!--=======================================================-->		
+	
+	<PTYPE name="TRAPENABLE"
+		method="select"
+		pattern="enable(1) disable(2)"
+		help="trap enable"/>
+	<!--=======================================================-->		
+	
+	<PTYPE name="FIBERSTATE"
+		method="select"
+		pattern="on(1) off(2) auto(3)"
+		help="fiber send state"/>
+	<!--=======================================================-->	
 
+     <PTYPE name="DDMPOWERMIN"
+         method="integer"
+          pattern="-50..0"
+          help="ddm power"/>
+     <PTYPE name="DDMPOWERMAX"
+         method="integer"
+          pattern="-20..5"
+          help="ddm power"/>          
+          
+
+     <PTYPE name="DDMVOLTMIN"
+         method="integer"
+          pattern="3..6"
+          help="ddm volt"/>	
+     <PTYPE name="DDMVOLTMAX"
+         method="integer"
+          pattern="3..10"
+          help="ddm volt"/>	          
+
+     <PTYPE name="DDMTEMPMIN"
+         method="integer"
+          pattern="-20..20"
+          help="ddm temp"/>	 
+     <PTYPE name="DDMTEMPMAX"
+         method="integer"
+          pattern="30..100"
+          help="ddm temp"/>	 
+
+     <PTYPE name="DDMBIASMIN"
+         method="integer"
+          pattern="3..30"
+          help="ddm rxBias"/>	 
+
+     <PTYPE name="DDMBIASMAX"
+         method="integer"
+          pattern="20..100"
+          help="ddm rxBias"/>	 
+          
+
+     <PTYPE name="VBUNIT"
+         method="integer"
+          pattern="2..5"
+          help="volt"/>
+
+     <PTYPE name="VXUNIT"
+         method="integer"
+          pattern="5..20"
+          help="volt"/>
+          
+     <PTYPE name="AUNIT"
+         method="integer"
+          pattern="-20..10"
+          help="temp (-20..10)"/>
+
+     <PTYPE name="APOWL"
+         method="integer"
+          pattern="-50..10"
+          help="power (-50..10)"/>
+
+     <PTYPE name="RETUNT"
+         method="integer"
+          pattern="0..999"
+          help="return time (0..999)"/>          
+
+     <PTYPE name="BUNIT"
+         method="integer"
+          pattern="0..100"
+          help="temp"/>
+         
+     <PTYPE name="TUNIT"
+          pattern="-?[0-9]*.?[0-9]"
+          help="temp"/>
+
+     <PTYPE name="SNMPPORT"
+         method="integer"
+          pattern="1..65535"
+          help="temp"/>     
+
+     <PTYPE name="VOLTMIN"
+         method="integer"
+          pattern="2..10"
+          help="volt min"/>     
+
+     <PTYPE name="VOLTMAX"
+         method="integer"
+          pattern="10..20"
+          help="volt max"/>     
+     <PTYPE name="VISINTFLOAT"
+          pattern="^[- 0-9 .]*$"
+          help="float"/>     
+
+          
 </CLISH_MODULE>
