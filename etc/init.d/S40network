@@ -2,7 +2,7 @@
 #
 # Start the network....
 #
-
+hwclock -s
 case "$1" in
   start)
  	echo "Starting network..."
