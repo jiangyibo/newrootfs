@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+ccenter&
+snmpd -c /vispace/snmp/snmpd.conf
+cd /vispace/webs
+./webs&
+

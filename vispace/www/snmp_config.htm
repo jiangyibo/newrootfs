@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/button.css" type="text/css" />
+<title>SNMP Configure</title>
+</head>
+<style type="text/css">
+.c td{padding:5px;}
+</style>
+<body>
+<ul id="nav">
+ <li><span>SNMP=></span></li>
+  <li><a href="snmp_config.htm" class="current">SNMP 配置</a></li>
+  <li><a href="desthost.asp">目标主机</a></li>
+  <li><a href="../help/snmp.htm" target="new">帮助</a></li>
+  </ul>
+  <div id="content" style="padding:10px;">
+	<form action="SNMP_config.htm" method="GET">
+	<table border="1" align="center" cellPadding="0" cellSpacing="0" class="dt">
+      <thead>
+  	 <tr>
+		  <th colspan="2">SNMP配置</th>
+		 </tr>
+     </thead>
+      <tr>
+        <th >读识别字(Get Community)</th>
+        <td><input size="15" name="getcom" /></td>
+      </tr>
+      <tr>
+        <th>写识别字(Set Community)</th>
+        <td><input size="15" name="setcom" /></td>
+      </tr>
+    </table>
+  </div>
+    <br/>
+    <div align="center">
+    	<input class="button gray" type="submit" value="应用" name="Applay">
+    </div>
+</form>
+</body>
+</html>
+<script ></script>

@@ -1,0 +1,93 @@
+html { text-align:center }
+body {
+margin:0 20px;
+text-align:left;
+font-size:12px;
+background-color:#CCC0C0;
+background:url("../images/bbg.jpg");
+}
+A:link {
+　　color: #fff;
+　　text-decoration:none;
+}
+A:visited {color:#FFCC00; text-decoration: none}
+
+#content{
+  padding:0px 0px 0 0px;
+  border: 5px solid #A9C9E2;
+  background-color: #92989C;
+  background:url("../images/cbg.jpg");
+}
+form{margin:0 0 0 10px;}
+
+/* ^^^^^^^^ BELOW IS THE CODE FOR THE MENU ^^^^^^^^^^ */
+ul#nav{margin:0;padding:0;list-style-type:none;width:auto;position:relative;display:block;height:36px;text-transform:uppercase;font-size:12px;font-weight:bold;background:transparent url("../images/bgOFF.gif") repeat-x top left;font-family:Helvetica,Arial,Verdana,sans-serif;border-bottom:4px solid #336666;border-top:1px solid #C0E2D4;}
+ul#nav li{display:block;float:left;margin:0;pading:0;}
+ul#nav li a{display:block;float:left;color:#874B46;text-decoration:none;padding:10px 20px 0 20px;height:24px;background:transparent url("../images/bgDIVIDER.gif") no-repeat top right;}
+ul#nav li a:hover{background:transparent url("../images/bgHOVER.gif") no-repeat top right;}
+ul#nav li a.current,ul#nav li a.current:hover{color:#fff;background:transparent url("../images/bgON.gif") no-repeat top right;}
+ul#nav li span{display:block;float:left;color:#574B46;text-decoration:none;padding:10px 20px 0 20px;height:24px;background:transparent url("../images/bgDIVIDER.gif") no-repeat top right;}
+.t5 {padding-top:5px;}
+.t5 th{align:"center"}
+.dt {border: 1px solid #963;}
+.dt tr.normalRow td {
+	background: #FFF;
+	border-bottom: none;
+	border-left: none;
+	border-right: 1px solid #CCC;
+	border-top: 1px solid #DDD;
+	padding: 2px 3px 3px 4px
+}
+.dt thead,.dt thead th{text-align:center;font-size:10px;color:#774B46;padding:3px;border:none;}
+.dt th{text-align:left;background-color:#CCC;padding:3px 2px 3px 3px;border:1px solid #808080;}
+.dt td{padding:2px 5px;}
+.toptitle th{text-align:center;border:none;}
+
+table{
+   border-collapse:collapse;
+}
+.dt th,.dt td{
+   border:1px solid #808080;
+}
+#ibox{
+height:18px;
+text-align:center;
+display:block;
+color:#FF6600;
+font-weight:bold;
+}
+.cbox{
+height:20px;
+text-align:center;
+font-size:12px;
+}
+
+.vsb0{
+margin-bottom:0;
+}
+.vsb5{
+margin-bottom:5px;
+}
+.vst10{
+margin-top:10px;
+}
+/* fluid Grids layout */
+#bd {
+    padding-left: 170px; /* allow for left column (#nav) */
+}
+
+#side {
+    margin-left: -170px;
+    position: relative; /* workaround for IE9 not firing mouse events on #side due to negative margin */
+    width: 170px;
+}
+
+#side .content {
+    margin-right: 10px; /* gutter between #nav and #main */
+}
+
+.hbox{display:inline-block;margin:3px}
+.yui3-u,.cbox {text-align: center; margin:0px auto; width:100%; } 
+.cbox {height:auto;}
+/* ^^^^^^^^ ABOVE IS THE CODE FOR THE MENU ^^^^^^^^^^ */
+

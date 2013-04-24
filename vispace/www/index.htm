@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="icon" href="/images/fav.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://www.bitbug.net/favicon.ico">
+<title>Welcome to use Web NMS</title>
+</head>
+<style type="text/css">
+body{margin:1px;}
+</style>
+<frameset rows="*" cols="200,*" frameborder="no" border="0" framespacing="0">
+  <frame src="menu.asp" name="leftFrame" scrolling="No" noresize="noresize" id="leftFrame" title="leftFrame" />
+  <frameset rows="340,*" cols="*" framespacing="0" frameborder="no" border="0">
+    <frame src="cv.asp" id="tf" name="topFrame" scrolling="No" noresize="noresize" title="topFrame" />
+    <frame src="alarm_list.asp" name="mf" id="mf" title="mf" />
+  </frameset>
+</frameset>
+<script type="text/javascript">
+var a = document.getElementById("mf");
+a.removeNode(true);
+</script>
+<noframes>
+<body>
+</body>
+</noframes>
+</html>

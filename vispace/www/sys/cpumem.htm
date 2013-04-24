@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+<link rel="stylesheet" href="../css/button.css" type="text/css" />
+<title>System Info</title>
+</head>
+<style type="text/css">
+.c td{padding:3px;}
+</style>
+
+<body>
+<ul id="nav">
+  <li><span>系统信息=></span></li>
+  <li><a href="nmubi.asp">系统基本信息</a></li>
+  <li><a href="sys_info.asp">系统信息</a></li>
+  <li><a href="chassis.asp">电源/风扇</a></li>
+  <li><a href="cpumem.htm" class="current">CPU/内存</a></li>
+  <li><a href="disk.htm">Flash</a></li>
+  <li><a href="proc.htm">进程状态</a></li>
+  <!--<li><a href="logusr.htm">登录用户</a></li>-->
+  <li><a href="help/sys_info.htm" target="new">帮助</a></li>
+</ul>
+<div id="content">
+<div class="cbox">
+   CPU/内存信息
+</div>
+<form name="genForm" method="post" action="/goform/date" onsubmit="return check();">
+<table border="1" align="center" cellpadding="0" cellspacing="0" class="dt">
+  <%UnitInfo(1);%>
+</table>
+<iframe width=100% src="/cgi-bin/cpumem.sh"></iframe>
+
+<table align="center">
+<tr>
+ <td>
+  <input class="button white medium" type="button" value="刷新" onclick="window.location.href('cpumem.htm');" name="refresh">
+ </td>
+ </tr>	
+</table>
+</form>
+</div>
+</body>
+</html>

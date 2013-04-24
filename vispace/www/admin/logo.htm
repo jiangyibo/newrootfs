@@ -1,0 +1,26 @@
+<html>
+<script language="javascript">
+function uploadLogoSubmit()
+{
+	var obj=document.getElementById("fileupload");
+
+	if ((obj.value.indexOf(".gif", obj.value.length - ".gif".length) !== -1)
+	|| (obj.value.indexOf(".jpg", obj.value.length - ".jpg".length) !== -1)
+	|| (obj.value.indexOf(".png", obj.value.length - ".png".length) !== -1))
+	{
+		return confirm("你真的升级吗?");
+	}
+	else
+	{
+		alert("必须选择gif或jpg或png格式图片文件!");
+		return false;
+	}
+}
+</script>
+<body>
+<form id="logoupdate" action="/goform/formUpload" method="POST" enctype="multipart/form-data" onsubmit="return uploadLogoSubmit();">
+<input id="fileupload" type="file" name="fileupload" size=20 value="">
+<input id="logouploadsubmit" type="submit" name="update" value="上传Logo图片"/>
+<form>
+</body>
+<html>

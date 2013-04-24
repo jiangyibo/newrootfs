@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../css/uview.css" type="text/css" />
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+<title>帮助--SNMP配置</title>
+</head>
+<style type="text/css">
+img {border-width:0px;}
+.imgl {float:left;}
+.imgr {float:right;padding:0; margin:0;}
+</style>
+<body>
+<ul id="nav">
+  <li><a href="index.htm">帮助</a></li>
+  <li><a href="chassis.htm">设备视图</a></li>
+  <li><a href="sys_info.htm">系统信息</a></li>
+  <li><a href="ml.htm">模块列表</a></li>
+  <li><a href="alarm.htm">告警管理</a></li>
+  <li><a href="snmp.htm" class="current">SNMP配置</a></li>
+  <li><a href="log.htm">日志管理</a></li>
+  <li><a href="sys.htm">系统管理</a></li>
+  <li><a href="otu.htm">OTU</a></li>
+  <li><a href="olp.htm">OLP</a></li>
+  </ul>
+  <h2>SNMP 配置说明</h2>
+  <p>
+  SNMP 配置包含以下信息:
+  </p>
+<table border="1" cellpadding="0" cellspacing="0" class="dt">
+  <thead>
+  <tr>
+  <th colspan="7">SNMP 配置</th>
+ </tr>
+  </thead>
+  <tr class="toptitle">
+    <th>主机IP地址</th>
+    <th>Get community</th>
+    <th>Set community</th>
+    <th>Port</th>
+    <th>Read only?</th>
+    <th>启用/禁用</th>
+    <th>操作</th>
+  </tr>
+  <input type='hidden' id='id1' value='1'/><tr><td><input id='hostIp1' maxlength='15' size='15' value=''/></td><td><input id='getc1' maxlength='15' size='15' value='public'/></td><td><input id='setc1' maxlength='15' size='15' value='private' /></td><td><input id='port1' maxlength='5' size='5' value='161' onkeyup='uIntInput(this);'/></td><td><INPUT TYPE='checkbox'  id='ro1' onclick='javascript:ro(this,1);'/></td><td><INPUT TYPE='checkbox' checked id='ena1'>启用</td><td><a href='/goform/comm?opt=del&id=1' onclick='return ackdel();'><img class='imgl'src='../images/del.gif' /></a><a href='#'><img src='../images/pen.gif'class='imgr' onclick='app(1);'/></a></td></tr><script type="text/javascript">canAdd=false;</script>
+  <tr>
+    <td><input id="hostIp0" name="hostIp0" maxlength="15" size="15" value="" style="background:#C0C0C0;" readonly="readonly"/></td>
+    <td><input id="getc0" name="getc0" maxlength="15" size="15" value="public" style="background:#C0C0C0;" readonly="readonly"/></td>
+    <td><input id="setc0" maxlength="15" size="15" value="private" style="background:#C0C0C0;" readonly="readonly"/></td>
+    <td><input id="port0" maxlength="5" size="5" value="161" style="background:#C0C0C0;"  readonly="readonly"/></td>
+    <td><INPUT TYPE="checkbox" id="ro0" style="background:#C0C0C0;" readonly="readonly"></td>
+    <td><INPUT TYPE="checkbox" id="ena0" checked  VALUE="on" style="background:#C0C0C0;"  readonly="readonly">启用</td>
+    <td><INPUT TYPE="checkbox" id ="addhost" VALUE="on" style="background:#C0C0C0;"  readonly="readonly">添加&nbsp;&nbsp;<a href='#'><img src='../images/pen.gif'" /></a></td>
+  </tr>
+</table>
+<h3>注意:主机IP地址为空时只能有一条SNMP 配置</h3>
+<h3>告警目标主机</h3>
+<table border="1" cellpadding="0" cellspacing="0" class="dt">
+  <thead>
+  <tr>
+  <th colspan="4">告警目标主机</th>
+  </tr>
+  </thead>
+  <tr class="toptitle">
+    <th>主机IP地址</th>
+    <th>UDP端口</th>
+    <th>启用/禁用</th>
+    <th>操作</th>
+  </tr>
+  
+  <tr>
+    <td><input id="destIp0" size="15" value=""/></td>
+    <td><input id="udp0" size="6" value="9162"/></td>
+    <td><INPUT TYPE="checkbox" id="ena0" checked  VALUE="on">启用</td>
+    <td><INPUT TYPE="checkbox" id ="addhost">添加&nbsp;&nbsp;<a href='#'>
+   <img src='../images/pen.gif'/></a></td>
+  </tr>
+</table>
+
+</body>
+</html>

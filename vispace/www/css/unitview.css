@@ -1,0 +1,112 @@
+.port{
+	height:40px;
+	margin:2px;
+	margin-right:10px;
+	/*background:blue;*/
+}
+
+.pl{
+   width:20px;
+   float:left;
+   margin-top:3px;
+   margin-bottom 2px;
+}
+.port img{
+   width:20px;
+   max-height:40px;
+   height:expression(document.body.clientHeight>40?"40px":"auto");
+   overflow:hidden;
+   float:right;
+   vertical-align:middle;
+   /*background:yellow;*/
+}
+.pimg {
+	 /*background:green;*/
+	 //float:right;
+	 vertical-align:middle;
+	 height: 40px;
+   line-height: 40px;
+   overflow: hidden;
+}
+.pimg img{
+	margin-top:3px;
+}
+.adpter{
+	padding:1px;
+	margin-right:3px;
+}
+.adpter img{
+	margin-top:5px;
+	padding-right:5px;
+	width:20px;
+}
+.port,.adpter{
+	font-size:10px;
+	padding-left:8px;
+}
+.ll{
+	clear:both;
+	width:18px;
+	padding-left:3px;
+}
+.ll, .il{
+	float:left;
+	height:12px;
+}
+.rl, .ri{
+	float:right;
+}
+.rl{
+	width:18px;
+}
+.uv{
+color:white;	
+}
+.uv td{border:0px;}
+
+.pane{
+	font-size:12px;
+	color:white;
+	padding:0;
+	margin:0;
+	height:260px;
+	width:60px;
+	background:url(../images/bd.gif) repeat center;
+}
+
+.pane .un{
+	text-align:center;
+	font-size:15px;
+}
+.ph{height:25px;width:60px;background:url(../images/hd.gif) repeat center;}
+.uc{
+	font-size:15px;
+	width:20px auto;
+	padding:0;
+	margin:0;
+}
+.ui h5{
+	text-align:center;
+	padding:0;
+  margin:0;
+  font-size:10px;
+}
+
+.leds{
+	height:60px;
+	font-size:8px;
+	color:white;
+	height:60px;
+	font-size:8px;
+	margin-top:3px;
+}
+.ft td {
+  padding:0;
+  margin:0;
+  height:26px;background:url(../images/ft.gif) no-repeat center;text-align:center;}
+.ubd{margin-left:1px;}
+img{border-width:0px 0px 0px 0px;}
+/*.ubd td{border-left-width:3px;border-color:blue;}*/
+
+
+

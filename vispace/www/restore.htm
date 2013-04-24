@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/button.css" type="text/css" />
+<title>Factory default</title>
+<style type="text/css">
+<!--
+body {
+	background-color: #C0C0C0;
+}
+-->
+</style></head>
+
+<body>
+<script language="javascript" type="text/javascript">
+function chkSelect(sel) 
+{ 
+   var a;
+   for(var i=0;i<17;i++) 
+   { 
+      a= document.getElementById("u"+i);
+      if(a.type=="checkbox") 
+      { 
+      	if (sel==0)
+      	  a.checked=false;
+      	else if (sel==1)
+      		a.checked=true;
+      	else
+      		a.checked=!a.checked;
+      } 
+   } 
+}
+
+function app(){
+ if (confirm("你真的恢复出厂设置吗?")!=true)
+   return false;
+ var n,u,c=0;
+ for (n=0;n<17;n++)
+ {
+   u=document.getElementById("u"+n);
+   if (u.checked!=true)
+      u.value="off";
+   else
+   {
+     u.value="on";
+     c=c+1;
+   }
+ }
+ if (c<1)
+ {
+   alert("没有勾选单元盘!");
+   return false;
+ }
+ return true;
+/*
+var msg;
+if (flag==1)
+   msg="你真的恢复出厂设置吗?";
+else
+   return(false);
+if (confirm(msg)){
+ document.getElementsByName("default_setting")[0].value=flag;
+ document.setcfg.submit();
+}
+else
+ return(false);
+*/
+}
+</script>
+<ul id="nav">
+  <li><span>系统管理=></span></li>
+  <li><a href="ip.asp">网络配置</a></li>
+  <li><a href="restore.htm" class="current">恢复出厂设置</a></li>
+  <li><a href="reset.htm">重启</a></li>
+  <li><a href="upgrade.htm">升级</a></li>
+  <li><a href="ie_conf.htm">定时刷新</a></li>
+  <li><a href="../help/sys.htm" target="new">帮助</a></li>
+</ul>
+<div id="content">
+<center>
+<form NAME="default" METHOD="POST" ACTION="/goform/sys" style="margin-top:0;" onsubmit="return app();">
+  <INPUT type="hidden" name="act" value="1">
+  <table border="1" align="center" cellpadding="0" cellspacing="0" class="dt">
+  <caption>请选择需要恢复出厂设置的单元盘</caption>
+  <br/>
+  <tr>
+    <td><INPUT type="checkbox" id="u0" name="u0" value="on">机箱</td>
+    <td><INPUT type="checkbox" id="u1" name="u1" value="on">单元盘1</td>
+    <td><INPUT type="checkbox" id="u2" name="u2" value="on">单元盘2</td>
+    <td><INPUT type="checkbox" id="u3" name="u3" value="on">单元盘3</td>
+    <td><INPUT type="checkbox" id="u4" name="u4" value="on">单元盘4</td>
+    <td><INPUT type="checkbox" id="u5" name="u5" value="on">单元盘5</td>
+    <td><INPUT type="checkbox" id="u6" name="u6" value="on">单元盘6</td>
+    <td><INPUT type="checkbox" id="u7" name="u7" value="on">单元盘7</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><INPUT type="checkbox" id="u8" name="u8" value="on">单元盘8</td>
+    <td><INPUT type="checkbox" id="u9" name="u9" value="on">单元盘9</td>
+    <td><INPUT type="checkbox" id="u10" name="u10" value="on">单元盘10</td>
+    <td><INPUT type="checkbox" id="u11" name="u11" value="on">单元盘11</td>
+    <td><INPUT type="checkbox" id="u12" name="u12" value="on">单元盘12</td>
+    <td><INPUT type="checkbox" id="u13" name="u13" value="on">单元盘13</td>
+    <td><INPUT type="checkbox" id="u14" name="u14" value="on">单元盘14</td>
+    <td><INPUT type="checkbox" id="u15" name="u15" value="on">单元盘15</td>
+    <td><INPUT type="checkbox" id="u16" name="u16" value="on">网管卡</td>
+  </tr>
+</table>
+<br/>
+<table align="center" cellpadding="0" cellspacing="0">
+ <tr>
+    <td><input type="button" id="sel" class="button white medium"value="全选" onclick="chkSelect(1);"/></td>
+    <td><input type="button" id="nosel" class="button white medium" value="全不选" onclick="chkSelect(0);"/></td>
+    <td><input type="button" id="unsel" class="button white medium" value="反选" onclick="chkSelect(2);"/></td>
+    <td><input type="submit" value="复出厂设置" id="b0" class="button white medium"/></td>
+  </tr>
+</table>
+</form>
+</center>
+</div>
+</body>
+</html>

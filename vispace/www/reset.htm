@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/button.css" type="text/css" />
+<title>reboot</title>
+<style type="text/css">
+<!--
+body {
+	background-color: #C0C0C0;
+}
+h2 { color:#FFFFFF;}
+-->
+</style></head>
+
+<body>
+<script language="javascript" type="text/javascript">
+function chkSelect(sel) 
+{ 
+   var a= document.getElementsByName("chk");
+   for(var i=0;i<a.length;i++) 
+   { 
+      if(a[i].type=="checkbox") 
+      { 
+      	if (sel==0)
+      	  a[i].checked=false;
+      	else if (sel==1)
+      	  a[i].checked=true;
+      	else
+      	  a[i].checked=!a[i].checked;
+      } 
+   } 
+}
+
+
+function app(flag){
+var msg;
+if (flag==1)
+   msg="你真的要重启吗?";
+else
+   return(false);
+if (confirm(msg)){
+ //document.getElementsByName("default_setting")[0].value=flag;
+ document.setcfg.submit();
+}
+else
+ return(false);
+}
+</script>
+<ul id="nav">
+  <li><span>系统管理=></span></li>
+  <li><a href="ip.asp">网络配置</a></li>
+  <li><a href="restore.htm">恢复出厂设置</a></li>
+  <li><a href="reset.htm" class="current">重启</a></li>
+  <li><a href="upgrade.htm">升级</a></li>
+  <li><a href="ie_conf.htm">定时刷新</a></li>
+  <li><a href="../help/sys.htm" target="new">帮助</a></li>
+</ul>
+<div id="content">
+<center>
+<form NAME="setcfg" METHOD="POST" ACTION="/goform/sys">
+<div align="center">
+<INPUT type="hidden" name="act" value="2">
+<INPUT type="hidden" name="u16" value="on">
+<input class="button white medium" type="submit" id="sel" value="重启" onclick="return app(1);"/>
+</form>
+</center>
+</div>
+</div>
+</body>
+</html>

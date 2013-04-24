@@ -1,0 +1,13 @@
+.ipInput{
+border:1px solid #ccc;
+font-size:12px;
+}
+.ipInput input{
+border:0px solid #ccc;
+font-size:12px;
+height:16px;
+width:28px;
+/*background:transparent;*/
+text-align:center;
+
+}
